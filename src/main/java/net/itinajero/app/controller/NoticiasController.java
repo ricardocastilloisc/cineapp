@@ -1,5 +1,6 @@
 package net.itinajero.app.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,10 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.itinajero.app.model.Noticia;
+import net.itinajero.app.service.INoticiasService;
 
 @Controller
 @RequestMapping("/noticias")
 public class NoticiasController {
+	
+	
+	@Autowired
+	private INoticiasService serviceNoticias;
+	
 	@GetMapping(value="/create")
 	public String crear() 
 	{
@@ -27,6 +34,8 @@ public class NoticiasController {
 		noticia.setEstatus(estatus);
 		//Pendiente: Guardar el objeo noticia en la BD5
 		System.out.println(noticia);
+		
+		serviceNoticias.guardar(noticia);
 		return "noticias/formNoticia";
 	}
 }
