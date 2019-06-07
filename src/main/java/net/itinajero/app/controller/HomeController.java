@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.itinajero.app.model.Pelicula;
+import net.itinajero.app.util.Utileria;
 
 @Controller
 public class HomeController {
-	
+
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String goHome(){
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String goHome() {
 		return "home";
 	}
-	//Metodo para generar una lista de Objetos de Modelo (Pelicula)
-	private List<Pelicula> getLista()
-	{
+
+	// Metodo para generar una lista de Objetos de Modelo (Pelicula)
+	private List<Pelicula> getLista() {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		List<Pelicula> lista  = null;
+		List<Pelicula> lista = null;
 		try {
 			lista = new LinkedList<>();
 			Pelicula pelicula1 = new Pelicula();
@@ -38,7 +39,7 @@ public class HomeController {
 			pelicula1.setGenero("Aventura");
 			pelicula1.setFechaEstreno(formatter.parse("02-05-2017"));
 			pelicula1.setEstatus("inactivo");
-			
+
 			Pelicula pelicula2 = new Pelicula();
 			pelicula2.setId(2);
 			pelicula2.setTitulo("La bella y la bestía");
@@ -47,7 +48,7 @@ public class HomeController {
 			pelicula2.setGenero("Infantil");
 			pelicula2.setFechaEstreno(formatter.parse("20-05-2017"));
 			pelicula2.setImagen("bella.png");
-			
+
 			Pelicula pelicula3 = new Pelicula();
 			pelicula3.setId(3);
 			pelicula3.setTitulo("Contratiempo");
@@ -56,47 +57,49 @@ public class HomeController {
 			pelicula3.setGenero("Thriller");
 			pelicula3.setFechaEstreno(formatter.parse("28-05-2017"));
 			pelicula3.setImagen("contratiempo.png");
-			
+
 			lista.add(pelicula1);
 			lista.add(pelicula2);
 			lista.add(pelicula3);
-			
+
 			return lista;
 		} catch (Exception e) {
 			// TODO: handle exception}
-			System.out.println("Error: "+ e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 			return null;
 		}
-		
+
 	}
-	@RequestMapping(value="/",  method=RequestMethod.GET)
-	public String mostrarPrincipal(Model model) 
-	{
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String mostrarPrincipal(Model model) {
+		List<String> listaFechas = Utileria.getNextDays(4);
+		System.out.println(listaFechas);
 		List<Pelicula> peliculas = getLista();
-		//peliculas.add("Rapido y furiosos");
-		//peliculas.add("El aro 2");
-		//peliculas.add("Aliens");
+		// peliculas.add("Rapido y furiosos");
+		// peliculas.add("El aro 2");
+		// peliculas.add("Aliens");
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
+		model.addAttribute("fechas", listaFechas);
 		model.addAttribute("peliculas", peliculas);
 		return "home";
 	}
-	
-	//@RequestMapping(value="/detail/{id}/{fecha}",  method=RequestMethod.GET)
-	//public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha ) 
-	@RequestMapping(value="/detail",  method=RequestMethod.GET)
-	public String mostrarDetalle(Model model, @RequestParam("idMovie") int idPelicula, @RequestParam("fecha") String fecha ) 
-	{
+
+	// @RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
+	// public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula,
+	// @PathVariable("fecha") String fecha )
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String mostrarDetalle(Model model, @RequestParam("idMovie") int idPelicula,
+			@RequestParam("fecha") String fecha) {
 		System.out.println("idPelicula: " + idPelicula);
 		System.out.println("Para la fecha: " + fecha);
 		/*
-		String tituloPelicula  = "Rapidos y furiosos";
-		int duracion = 136;
-		double precioEntrada = 50;
-		model.addAttribute("titulo", tituloPelicula);
-		model.addAttribute("duracion", duracion);
-		model.addAttribute("precio", precioEntrada);
-		*/
+		 * String tituloPelicula = "Rapidos y furiosos"; int duracion = 136; double
+		 * precioEntrada = 50; model.addAttribute("titulo", tituloPelicula);
+		 * model.addAttribute("duracion", duracion); model.addAttribute("precio",
+		 * precioEntrada);
+		 */
 		return "detalle";
 	}
-	
+
 }

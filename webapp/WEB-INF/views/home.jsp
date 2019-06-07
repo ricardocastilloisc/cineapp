@@ -74,10 +74,11 @@
 					<div class="form-group">
 						<label for="fecha">Fecha: </label> <select id="fecha" name="fecha"
 							class="form-control">
-							<option value="01-05-2017">01-05-2017</option>
-							<option value="02-05-2017">02-05-2017</option>
-							<option value="03-05-2017">03-05-2017</option>
-							<option value="04-05-2017">04-05-2017</option>
+							<c:forEach items="${fechas}" var="fecha">
+
+								<option value="${fecha}">${fecha}</option>
+							</c:forEach>
+
 						</select>
 					</div>
 					<button type="submit" class="btn btn-primary">Filtrar</button>
@@ -102,13 +103,15 @@
 							<span class="label label-default">${pelicula.duracion }min</span>
 							<span class="label label-default">${pelicula.genero }</span>
 						</h4>
-						<p>`
-						<!-- 
+						<p>
+							`
+							<!-- 
 							<a class="btn btn-sm btn-primary" href="detail/${pelicula.id}/${fechaBusqueda}" role="button">Consulta
 								Horarios &raquo;</a>
 								 -->
-							<a class="btn btn-sm btn-primary" href="detail?idMovie=${pelicula.id}&fecha=${fechaBusqueda}" role="button">Consulta
-								Horarios &raquo;</a>
+							<a class="btn btn-sm btn-primary"
+								href="detail?idMovie=${pelicula.id}&fecha=${fechaBusqueda}"
+								role="button">Consulta Horarios &raquo;</a>
 						</p>
 					</div>
 				</c:forEach>
@@ -135,14 +138,14 @@
 							La novela de Cynthia Swanson <span style="color: #0000ff;"><strong>The
 									Bookseller</strong></span> ser&aacute; llevada al cine con <span
 								style="color: #0000ff;">Julia Roberts (Los Pitufos: La
-								aldea Escondida)</span> como protagonista.<br />
-							<br />La historia est&aacute; ambientada en los sesenta y su
-							protagonista es una mujer soltera, Kitty Miller, que lleva una
-							librer&iacute;a. Sue&ntilde;a con una vida alternativa en la que
-							ha encontrado el amor y est&aacute; casada y con hijos, pero la
-							l&iacute;nea que separa realidad y ficci&oacute;n comienza a
-							estar demasiado dispersa para que la distinga.<br />
-							<br />Seg&uacute;n informa <span style="color: #ff0000;"><strong>Moviehole</strong></span>
+								aldea Escondida)</span> como protagonista.<br /> <br />La historia
+							est&aacute; ambientada en los sesenta y su protagonista es una
+							mujer soltera, Kitty Miller, que lleva una librer&iacute;a.
+							Sue&ntilde;a con una vida alternativa en la que ha encontrado el
+							amor y est&aacute; casada y con hijos, pero la l&iacute;nea que
+							separa realidad y ficci&oacute;n comienza a estar demasiado
+							dispersa para que la distinga.<br /> <br />Seg&uacute;n informa
+							<span style="color: #ff0000;"><strong>Moviehole</strong></span>
 							Roberts tambi&eacute;n producir&aacute; la pel&iacute;cula junto
 							a Lisa Gillan y Marisa Yeres Hill.
 						</p>
