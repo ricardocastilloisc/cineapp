@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Titulo de la pela Pelicula ${titulo}</h1>
-	<h2>Duracion ${duracion}</h2>
-	<h3>Precio ${precio}</h3>
+	<h1>${pelicula}</h1>
+
 </body>
 </html>

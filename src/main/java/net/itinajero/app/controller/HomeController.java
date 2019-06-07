@@ -57,14 +57,15 @@ public class HomeController {
 		return "home";
 	}
 
-	// @RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
-	// public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula,
-	// @PathVariable("fecha") String fecha )
-	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String mostrarDetalle(Model model, @RequestParam("idMovie") int idPelicula,
-			@RequestParam("fecha") String fecha) {
+	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
+	 public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula,
+	@PathVariable("fecha") String fecha ){
+	//@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	//public String mostrarDetalle(Model model, @RequestParam("idMovie") int idPelicula,
+		//	@RequestParam("fecha") String fecha) {
 		System.out.println("idPelicula: " + idPelicula);
 		System.out.println("Para la fecha: " + fecha);
+		model.addAttribute("pelicula", servicePeliculas.buscarPorId(idPelicula));
 		/*
 		 * String tituloPelicula = "Rapidos y furiosos"; int duracion = 136; double
 		 * precioEntrada = 50; model.addAttribute("titulo", tituloPelicula);
