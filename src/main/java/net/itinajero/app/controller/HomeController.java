@@ -24,6 +24,14 @@ public class HomeController {
 	public String goHome() {
 		return "home";
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String buscar(@RequestParam("fecha") String fecha) 
+	{
+		System.out.println("buscando todas las peliculas en exhibicion para la fecha: " + fecha);
+		
+		return "home";
+	}
 
 	// Metodo para generar una lista de Objetos de Modelo (Pelicula)
 	private List<Pelicula> getLista() {
@@ -37,7 +45,7 @@ public class HomeController {
 			pelicula1.setDuracion(120);
 			pelicula1.setClasificacion("B");
 			pelicula1.setGenero("Aventura");
-			pelicula1.setFechaEstreno(formatter.parse("02-05-2017"));
+			pelicula1.setFechaEstreno(formatter.parse("10-06-2019"));
 			pelicula1.setEstatus("inactivo");
 
 			Pelicula pelicula2 = new Pelicula();
@@ -46,7 +54,7 @@ public class HomeController {
 			pelicula2.setDuracion(132);
 			pelicula2.setClasificacion("A");
 			pelicula2.setGenero("Infantil");
-			pelicula2.setFechaEstreno(formatter.parse("20-05-2017"));
+			pelicula2.setFechaEstreno(formatter.parse("11-06-2019"));
 			pelicula2.setImagen("bella.png");
 
 			Pelicula pelicula3 = new Pelicula();
@@ -55,7 +63,7 @@ public class HomeController {
 			pelicula3.setDuracion(106);
 			pelicula3.setClasificacion("B");
 			pelicula3.setGenero("Thriller");
-			pelicula3.setFechaEstreno(formatter.parse("28-05-2017"));
+			pelicula3.setFechaEstreno(formatter.parse("12-06-2019"));
 			pelicula3.setImagen("contratiempo.png");
 
 			lista.add(pelicula1);
