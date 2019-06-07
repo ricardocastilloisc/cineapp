@@ -1,6 +1,7 @@
 package net.itinajero.app.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import net.itinajero.app.model.Pelicula;
 
 @Controller
 public class HomeController {
+	
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String goHome(){
@@ -72,20 +75,24 @@ public class HomeController {
 		//peliculas.add("Rapido y furiosos");
 		//peliculas.add("El aro 2");
 		//peliculas.add("Aliens");
+		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("peliculas", peliculas);
 		return "home";
 	}
 	
-	@RequestMapping(value="/detail/{id}",  method=RequestMethod.GET)
-	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula) 
+	@RequestMapping(value="/detail/{id}/{fecha}",  method=RequestMethod.GET)
+	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha ) 
 	{
 		System.out.println("idPelicula: " + idPelicula);
+		System.out.println("Para la fecha: " + fecha);
+		/*
 		String tituloPelicula  = "Rapidos y furiosos";
 		int duracion = 136;
 		double precioEntrada = 50;
 		model.addAttribute("titulo", tituloPelicula);
 		model.addAttribute("duracion", duracion);
 		model.addAttribute("precio", precioEntrada);
+		*/
 		return "detalle";
 	}
 	
