@@ -26,10 +26,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String buscar(@RequestParam("fecha") String fecha) 
+	public String buscar(@RequestParam("fecha") String fecha, Model model) 
 	{
 		System.out.println("buscando todas las peliculas en exhibicion para la fecha: " + fecha);
-		
+		List<String> listaFechas = Utileria.getNextDays(4);
+		System.out.println(listaFechas);
+		List<Pelicula> peliculas = getLista();
+		model.addAttribute("fechaBusqueda", fecha);
+		model.addAttribute("fechas", listaFechas);
+		model.addAttribute("peliculas", peliculas);
 		return "home";
 	}
 

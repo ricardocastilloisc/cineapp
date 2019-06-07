@@ -71,7 +71,7 @@
 				<h2 class="text text-center">
 					<span class="label label-success">EN CARTELERA</span>
 				</h2>
-				<form class="form-inline" action="${urlRoot}/search" method="post">
+				<form class="form-inline" action="${urlRoot}search" method="post">
 					<div class="form-group">
 						<label for="fecha">Fecha: </label> <select id="fecha" name="fecha"
 							class="form-control">
