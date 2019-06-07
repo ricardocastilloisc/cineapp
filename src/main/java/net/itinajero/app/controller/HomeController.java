@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.itinajero.app.model.Pelicula;
+import net.itinajero.app.service.IPeliculasService;
 import net.itinajero.app.util.Utileria;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private IPeliculasService servicePeliculas;
 
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -31,24 +36,18 @@ public class HomeController {
 		System.out.println("buscando todas las peliculas en exhibicion para la fecha: " + fecha);
 		List<String> listaFechas = Utileria.getNextDays(4);
 		System.out.println(listaFechas);
-		List<Pelicula> peliculas = getLista();
+		List<Pelicula> peliculas = servicePeliculas.buscarTodas();
 		model.addAttribute("fechaBusqueda", fecha);
 		model.addAttribute("fechas", listaFechas);
 		model.addAttribute("peliculas", peliculas);
 		return "home";
 	}
 
-	// Metodo para generar una lista de Objetos de Modelo (Pelicula)
-	private List<Pelicula> getLista() {
-
-
-	}
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
 		List<String> listaFechas = Utileria.getNextDays(4);
 		System.out.println(listaFechas);
-		List<Pelicula> peliculas = getLista();
+		List<Pelicula> peliculas = servicePeliculas.buscarTodas();
 		// peliculas.add("Rapido y furiosos");
 		// peliculas.add("El aro 2");
 		// peliculas.add("Aliens");
