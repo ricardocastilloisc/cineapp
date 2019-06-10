@@ -2,7 +2,10 @@ package net.itinajero.app.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import net.itinajero.app.model.Pelicula;
 
 @Controller
 @RequestMapping("/peliculas")
@@ -13,4 +16,12 @@ public class PeliculasController {
 	{
 		return "peliculas/formPelicula";
 	}
+	
+	@PostMapping("/save")
+	public String guardar(Pelicula pelicula) 
+	{
+		System.out.println("Recibiendo objeto pelicula " + pelicula);
+		return "peliculas/formPelicula";
+	}
+	
 }

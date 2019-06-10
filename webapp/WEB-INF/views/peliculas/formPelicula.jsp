@@ -11,6 +11,7 @@
 <meta name="author" content="">
 <title>Creacion de Peliculas</title>
 <spring:url value="/resources" var="urlPublic" />
+<spring:url value="/peliculas/save" var="urlForm" />
 <link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
@@ -31,7 +32,7 @@
 			</h3>
 		</div>
 
-		<form>
+		<form action="${urlForm}" method="post">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="form-group">
