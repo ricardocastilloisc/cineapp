@@ -25,6 +25,8 @@
 
       <h3>Listado de Peliculas</h3>
       
+      ${mensaje }
+      
       <a href="${urlCreate}" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva</a><br><br>
 	
       <div class="table-responsive">

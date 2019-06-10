@@ -43,7 +43,7 @@ public class PeliculasController {
 
 	
 	@PostMapping("/save")
-	public String guardar(Pelicula pelicula, BindingResult result) 
+	public String guardar(Pelicula pelicula, BindingResult result, Model model) 
 	{
 		
 		if(result.hasErrors()) 
@@ -60,6 +60,8 @@ public class PeliculasController {
 		System.out.println("Recibiendo objeto pelicula " + pelicula);
 		servicePeliculas.insertar(pelicula);
 		System.out.println("Elementos despues de la insercion "  + servicePeliculas.buscarTodas().size());
+		
+		model.addAttribute("mensaje", "El registro fue guardado");
 		
 		//return "peliculas/formPelicula";
 		return "redirect:/peliculas/index";
