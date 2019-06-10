@@ -105,7 +105,7 @@
 						<img class="img-rounded"
 							src="${urlPublic}/images/${pelicula.imagen}"
 							alt="Generic placeholder image" width="150" height="200">
-						<h4>Logan: Wolverine</h4>
+						<h4>${pelicula.titulo }</h4>
 						<h4>
 							<span class="label label-default">${pelicula.clasificacion }</span>
 							<span class="label label-default">${pelicula.duracion }min</span>
