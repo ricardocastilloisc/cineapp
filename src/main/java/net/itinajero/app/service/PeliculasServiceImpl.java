@@ -74,4 +74,9 @@ public class PeliculasServiceImpl implements IPeliculasService{
 		return null;
 	}
 
+	@Override
+	public void insertar(Pelicula pelicula) {
+		lista.add(pelicula);
+	}
+
 }
