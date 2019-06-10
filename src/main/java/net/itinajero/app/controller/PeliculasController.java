@@ -45,23 +45,24 @@ public class PeliculasController {
 	@PostMapping("/save")
 	public String guardar(Pelicula pelicula, BindingResult result) 
 	{
-		/*
+		
 		if(result.hasErrors()) 
 		{
 			System.out.println("Existieron errores");
 			return "peliculas/formPelicula";
-		}*/
-		
+		}
+		/*
 		for (ObjectError error: result.getAllErrors()){
 			System.out.println(error.getDefaultMessage());
 			}
-		
+		*/		
 		System.out.println("Elementos antes de la insercion "  + servicePeliculas.buscarTodas().size());
 		System.out.println("Recibiendo objeto pelicula " + pelicula);
 		servicePeliculas.insertar(pelicula);
 		System.out.println("Elementos despues de la insercion "  + servicePeliculas.buscarTodas().size());
 		
-		return "peliculas/formPelicula";
+		//return "peliculas/formPelicula";
+		return "redirect:/peliculas/index";
 	}
 	
 	
