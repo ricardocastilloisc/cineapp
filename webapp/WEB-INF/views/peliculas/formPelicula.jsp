@@ -47,7 +47,8 @@
 				</ul>
 			</div>
 		</spring:hasBindErrors>
-
+		
+		${pelicula}
 		<form:form action="${urlForm}" method="post"
 			enctype="multipart/form-data" modelAttribute="pelicula">
 			<div class="row">
