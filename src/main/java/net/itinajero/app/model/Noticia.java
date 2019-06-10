@@ -10,6 +10,7 @@ public class Noticia {
 	private String estatus;
 
 	public Noticia() {
+		System.out.println("Constructor noticias");
 		// TODO Auto-generated constructor stub
 		this.fecha = new Date();
 		this.estatus = "Activa";
@@ -24,6 +25,7 @@ public class Noticia {
 	}
 
 	public String getTitulo() {
+		System.out.println("Set tiulo");
 		return titulo;
 	}
 
