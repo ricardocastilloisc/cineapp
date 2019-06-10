@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.itinajero.app.model.Pelicula;
+import net.itinajero.app.service.IBannersService;
 import net.itinajero.app.service.IPeliculasService;
 import net.itinajero.app.util.Utileria;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private IBannersService serviceBanners;
 	
 	@Autowired
 	private IPeliculasService servicePeliculas;
@@ -40,6 +44,7 @@ public class HomeController {
 		model.addAttribute("fechaBusqueda", fecha);
 		model.addAttribute("fechas", listaFechas);
 		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("banners", serviceBanners.buscarTodos());
 		return "home";
 	}
 
@@ -54,6 +59,7 @@ public class HomeController {
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("fechas", listaFechas);
 		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("banners", serviceBanners.buscarTodos());
 		return "home";
 	}
 
