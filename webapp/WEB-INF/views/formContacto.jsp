@@ -28,20 +28,21 @@
 			<span class="label label-success">Contacto</span>
 		</h3>
 		<br>
-
-		<form class="form-horizontal">
+		
+		${instanciaContacto}
+		<form:form class="form-horizontal" method="post" modelAttribute="instanciaContacto">
 			<div class="form-group">
 				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="nombre" name="nombre"
-						placeholder="Nombre" required="required">
+					<form:input type="text" class="form-control" id="nombre" path="nombre"
+						placeholder="Nombre" required="required" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" name="email" id="email"
-						placeholder="Email" required="required">
+					<form:input type="email" class="form-control" path="email" id="email"
+						placeholder="Email" required="required" />
 				</div>
 			</div>
 
@@ -49,18 +50,18 @@
 				<label for="genero" class="col-sm-2 control-label">Géneros
 					Favoritos</label>
 				<div class="col-sm-10">
-					<select id="genero" name="generos" multiple="multiple"
+					<form:select id="genero" path="generos" multiple="multiple"
 						class="form-control">
-						<option value="Accion">Accion</option>
-						<option value="Aventura">Aventura</option>
-						<option value="Clasicas">Clasicas</option>
-						<option value="Comedia Romantica">Comedia Romantica</option>
-						<option value="Drama">Drama</option>
-						<option value="Terror">Terror</option>
-						<option value="Infantil">Infantil</option>
-						<option value="Accion y Aventura">Accion y Aventura</option>
-						<option value="Romantica">Romantica</option>
-					</select>
+						<form:option value="Accion">Accion</form:option>
+						<form:option value="Aventura">Aventura</form:option>
+						<form:option value="Clasicas">Clasicas</form:option>
+						<form:option value="Comedia Romantica">Comedia Romantica</form:option>
+						<form:option value="Drama">Drama</form:option>
+						<form:option value="Terror">Terror</form:option>
+						<form:option value="Infantil">Infantil</form:option>
+						<form:option value="Accion y Aventura">Accion y Aventura</form:option>
+						<form:option value="Romantica">Romantica</form:option>
+					</form:select>
 				</div>
 			</div>
 
@@ -68,11 +69,11 @@
 				<label class="col-sm-2 control-label">Tu experiencia en el
 					sitio</label>
 				<div class="col-sm-10">
-					<label><input type="radio" name="rating" value="1">Muy
-						Mala</label> <label><input type="radio" name="rating" value="2">Mala</label>
-					<label><input type="radio" name="rating" value="3">Regular</label>
-					<label><input type="radio" name="rating" value="4">Buena</label>
-					<label><input type="radio" name="rating" value="5">Muy
+					<label><input type="radio" path="rating" value="1" >Muy
+						Mala</label> <label><input type="radio" path="rating" value="2" >Mala</label>
+					<label><input type="radio" path="rating" value="3" >Regular</label>
+					<label><input type="radio" path="rating" value="4" >Buena</label>
+					<label><input type="radio" path="rating" value="5" >Muy
 						Buena</label>
 				</div>
 			</div>
@@ -93,8 +94,8 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Comentarios:</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" name="comentarios" id="comentarios"
-						rows="5"></textarea>
+					<form:textarea class="form-control" path="comentarios" id="comentarios"
+						rows="5"></form:textarea>
 				</div>
 			</div>
 
@@ -104,7 +105,7 @@
 				</div>
 			</div>
 
-		</form>
+		</form:form>
 
 		<hr class="featurette-divider">
 
