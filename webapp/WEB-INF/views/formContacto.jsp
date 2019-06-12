@@ -30,7 +30,7 @@
 		<br>
 		
 		${instanciaContacto}
-		<form:form class="form-horizontal" method="post" modelAttribute="instanciaContacto">
+		<form:form class="form-horizontal" action="${urlRoot}contacto" method="post" modelAttribute="instanciaContacto">
 			<div class="form-group">
 				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
@@ -51,17 +51,7 @@
 					Favoritos</label>
 				<div class="col-sm-10">
 					<form:select id="genero" path="generos" multiple="multiple"
-						class="form-control">
-						<form:option value="Accion">Accion</form:option>
-						<form:option value="Aventura">Aventura</form:option>
-						<form:option value="Clasicas">Clasicas</form:option>
-						<form:option value="Comedia Romantica">Comedia Romantica</form:option>
-						<form:option value="Drama">Drama</form:option>
-						<form:option value="Terror">Terror</form:option>
-						<form:option value="Infantil">Infantil</form:option>
-						<form:option value="Accion y Aventura">Accion y Aventura</form:option>
-						<form:option value="Romantica">Romantica</form:option>
-					</form:select>
+						class="form-control" items="${generos}"/>
 				</div>
 			</div>
 
