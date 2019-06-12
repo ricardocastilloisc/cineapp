@@ -71,12 +71,7 @@
 				<label class="col-sm-2 control-label">Te gustaría recibir
 					notificaciones de:</label>
 				<div class="col-sm-10">
-					<label><input type="checkbox" name="notificaciones"
-						value="Estrenos">Estrenos</label> <label><input
-						type="checkbox" name="notificaciones" value="Promociones">Promociones</label>
-					<label><input type="checkbox" name="notificaciones"
-						value="Noticias">Noticias</label> <label><input
-						type="checkbox" name="notificaciones" value="Preventas">Preventas</label>
+					<form:checkboxes path="notificaciones" items="${tipos}"/>
 				</div>
 			</div>
 
