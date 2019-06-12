@@ -12,7 +12,8 @@
 <title>Formulario de Contacto</title>
 <spring:url value="/resources" var="urlPublic" />
 <spring:url value="/" var="urlRoot" />
-<link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
 
 </head>
@@ -27,22 +28,21 @@
 		<h3 class="blog-title text-center">
 			<span class="label label-success">Contacto</span>
 		</h3>
-		<br>
-		
-		${instanciaContacto}
-		<form:form class="form-horizontal" action="${urlRoot}contacto" method="post" modelAttribute="instanciaContacto">
+		<br> ${instanciaContacto}
+		<form:form class="form-horizontal" action="${urlRoot}contacto"
+			method="post" modelAttribute="instanciaContacto">
 			<div class="form-group">
 				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
-					<form:input type="text" class="form-control" id="nombre" path="nombre"
-						placeholder="Nombre" required="required" />
+					<form:input type="text" class="form-control" id="nombre"
+						path="nombre" placeholder="Nombre" required="required" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
-					<form:input type="email" class="form-control" path="email" id="email"
-						placeholder="Email" required="required" />
+					<form:input type="email" class="form-control" path="email"
+						id="email" placeholder="Email" required="required" />
 				</div>
 			</div>
 
@@ -51,7 +51,7 @@
 					Favoritos</label>
 				<div class="col-sm-10">
 					<form:select id="genero" path="generos" multiple="multiple"
-						class="form-control" items="${generos}"/>
+						class="form-control" items="${generos}" />
 				</div>
 			</div>
 
@@ -59,12 +59,11 @@
 				<label class="col-sm-2 control-label">Tu experiencia en el
 					sitio</label>
 				<div class="col-sm-10">
-					<label><input type="radio" path="rating" value="1" >Muy
-						Mala</label> <label><input type="radio" path="rating" value="2" >Mala</label>
-					<label><input type="radio" path="rating" value="3" >Regular</label>
-					<label><input type="radio" path="rating" value="4" >Buena</label>
-					<label><input type="radio" path="rating" value="5" >Muy
-						Buena</label>
+					<label><form:radiobutton path="rating" value="1" />Muy
+						Mala</label> <label><form:radiobutton path="rating" value="2" />Mala</label>
+					<label><form:radiobutton path="rating" value="3" />Regular</label>
+					<label><form:radiobutton path="rating" value="4" />Buena</label> <label><form:radiobutton
+							path="rating" value="5" />Muy Buena</label>
 				</div>
 			</div>
 
@@ -84,8 +83,8 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Comentarios:</label>
 				<div class="col-sm-10">
-					<form:textarea class="form-control" path="comentarios" id="comentarios"
-						rows="5"></form:textarea>
+					<form:textarea class="form-control" path="comentarios"
+						id="comentarios" rows="5"></form:textarea>
 				</div>
 			</div>
 
