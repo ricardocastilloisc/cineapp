@@ -13,8 +13,11 @@ public class AppSorting {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		NoticiasRepository repo = context.getBean("noticiasRepository", NoticiasRepository.class);
+		//obtener todas las entidades ordenadas por un campo.
+		//List<Noticia> lista = repo.findAll(Sort.by("titulo").descending());
 		
-		List<Noticia> lista = repo.findAll(Sort.by("titulo").descending());
+		//obtener todas las entidades ordenadas por 2 campos
+		List<Noticia> lista = repo.findAll(Sort.by("fecha").descending().and(Sort.by("titulo").ascending()));
 		for(Noticia n: lista) 
 		{
 			System.out.println(n);
