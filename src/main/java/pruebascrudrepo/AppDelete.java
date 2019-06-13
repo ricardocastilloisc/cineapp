@@ -1,25 +1,31 @@
-package pruebasjpa;
+package pruebascrudrepo;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import net.itinajero.app.model.Noticia;
 import net.itinajero.app.repository.NoticiasRepository;
 
-public class AppFindAll {
+public class AppDelete {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 		NoticiasRepository repo = context.getBean("noticiasRepository", NoticiasRepository.class);
 		
-		List<Noticia> lista = repo.findAll();
 		
-		for(Noticia n: lista) 
+		int idNoticia =  2;		
+		
+		if(repo.existsById(idNoticia)) 
 		{
-			System.out.println(n);
+			
+			repo.deleteById(idNoticia);
 		}
+
 		context.close();
+
 	}
 
 }
