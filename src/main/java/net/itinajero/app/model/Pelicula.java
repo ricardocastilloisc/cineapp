@@ -1,50 +1,58 @@
 package net.itinajero.app.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name="peliculas")
+@Table(name="Peliculas")
 public class Pelicula {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // auto_increment MySQL
 	private int id;
 	private String titulo;
-	private int duracion = 100;
+	private int duracion;
+	private String clasificacion;
 	private String genero;
-	private String clasificacion = "B";
-	private String imagen = "cinema.png";
-	private Date fechaEstreno;
-	private String estatus = "Activa";
+	private String imagen = "cinema.png"; // imagen por default	
+	private Date fechaEstreno;	
+	private String estatus="Activa";
 	
+	//@Transient // ignorar este atributo durante la persistencia
+	@OneToOne
+	@JoinColumn(name="idDetalle")
 	private Detalle detalle;
+	
+	@OneToMany(mappedBy="pelicula",fetch=FetchType.EAGER)
+	private List<Horario> horarios;
+	
+	
+	public Pelicula() {
+		//System.out.println("Constructor Pelicula");
+	}
 	
 	public Detalle getDetalle() {
 		return detalle;
 	}
-
-
+	
 	public void setDetalle(Detalle detalle) {
 		this.detalle = detalle;
 	}
 
-
 	public int getId() {
 		return id;
 	}
-	
-	
-	public Pelicula() {
-		System.out.println("Contructor pelicula");
-	}
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -60,17 +68,17 @@ public class Pelicula {
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
-	public String getGenero() {
-		return genero;
-	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
 	public String getClasificacion() {
 		return clasificacion;
 	}
 	public void setClasificacion(String clasificacion) {
 		this.clasificacion = clasificacion;
+	}
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 	public String getImagen() {
 		return imagen;
@@ -90,15 +98,21 @@ public class Pelicula {
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
 	}
+
+		
+	public List<Horario> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
+	}
+
 	@Override
 	public String toString() {
-		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", genero=" + genero
-				+ ", clasificacion=" + clasificacion + ", imagen=" + imagen + ", fechaEstreno=" + fechaEstreno
+		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", clasificacion="
+				+ clasificacion + ", genero=" + genero + ", imagen=" + imagen + ", fechaEstreno=" + fechaEstreno
 				+ ", estatus=" + estatus + ", detalle=" + detalle + "]";
 	}
 	
-	
-	
-
-
 }
