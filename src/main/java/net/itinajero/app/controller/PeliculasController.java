@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.itinajero.app.model.Pelicula;
+import net.itinajero.app.service.IDetallesService;
 import net.itinajero.app.service.IPeliculasService;
 import net.itinajero.app.util.Utileria;
 
@@ -32,6 +33,9 @@ import net.itinajero.app.util.Utileria;
 @RequestMapping("/peliculas")
 public class PeliculasController {
 
+	@Autowired
+	private IDetallesService serviceDetalles;
+	
 	@Autowired
 	private IPeliculasService servicePeliculas;
 
@@ -61,18 +65,19 @@ public class PeliculasController {
 			String nombreImagen = Utileria.guardarImagen(multiPart, request);
 			pelicula.setImagen(nombreImagen);
 		}
+		
+		
+		System.out.println("Antes: " + pelicula.getDetalle());
+		serviceDetalles.insertar(pelicula.getDetalle());
+		System.out.println("Despues: " + pelicula.getDetalle());
 
 		/*
 		 * for (ObjectError error: result.getAllErrors()){
 		 * System.out.println(error.getDefaultMessage()); }
 		 */
-		System.out.println("Elementos antes de la insercion " + servicePeliculas.buscarTodas().size());
 		System.out.println("Recibiendo objeto pelicula " + pelicula);
 		servicePeliculas.insertar(pelicula);
-		System.out.println("Elementos despues de la insercion " + servicePeliculas.buscarTodas().size());
-
 		attributes.addFlashAttribute("mensaje", "El registro fue guardado");
-
 		// return "peliculas/formPelicula";
 		return "redirect:/peliculas/index";
 	}
