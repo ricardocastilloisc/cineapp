@@ -23,7 +23,7 @@ public class PeliculasServiceJPA implements IPeliculasService {
 	@Override
 	public List<Pelicula> buscarTodas() {
 		// TODO Auto-generated method stub
-		return null;
+		return peliculasRepo.findAll();
 	}
 
 	@Override
