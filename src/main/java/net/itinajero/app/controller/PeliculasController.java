@@ -97,6 +97,14 @@ public class PeliculasController {
 		model.addAttribute("pelicula", pelicula);
 		return "peliculas/formPelicula";
 	}
+	
+	@GetMapping(value="/delete/{id}")
+	public String eliminar(@PathVariable("id") int idPelicula, RedirectAttributes attributes) 
+	{
+		servicePeliculas.eliminar(idPelicula);
+		attributes.addFlashAttribute("mensaje", "El registro fue guardado");
+		return "redirect:/peliculas/index";
+	}
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
