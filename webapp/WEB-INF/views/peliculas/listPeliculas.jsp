@@ -14,6 +14,7 @@
 <spring:url value="/peliculas/create" var="urlCreate" />
 <spring:url value="/peliculas/edit" var="urlEdit" />
 <spring:url value="/peliculas/delete" var="urlDelete" />
+<spring:url value="/peliculas" var="urlPeliculas" />
 <link href="${urlPublic}/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
@@ -49,7 +50,7 @@
 					<th>Opciones</th>
 				</tr>
 
-				<c:forEach var="pelicula" items="${peliculas}">
+				<c:forEach var="pelicula" items="${peliculas.content}">
 					<tr>
 						<td>${pelicula.titulo}</td>
 						<td>${pelicula.genero}</td>
@@ -65,18 +66,39 @@
 								<td><span class="label label-danger">${pelicula.estatus}</span></td>
 							</c:otherwise>
 						</c:choose>
-						<td><a href="${urlEdit}/${pelicula.id}" class="btn btn-success btn-sm" role="button"
-							title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a href="${urlDelete}/${pelicula.id}" onclick='return confirm("¿Estas seguro?")' class="btn btn-danger btn-sm" role="button"
-							title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a>
-						</td>
+						<td><a href="${urlEdit}/${pelicula.id}"
+							class="btn btn-success btn-sm" role="button" title="Edit"><span
+								class="glyphicon glyphicon-pencil"></span></a> <a
+							href="${urlDelete}/${pelicula.id}"
+							onclick='return confirm("¿Estas seguro?")'
+							class="btn btn-danger btn-sm" role="button" title="Eliminar"><span
+								class="glyphicon glyphicon-trash"></span></a></td>
 					</tr>
 				</c:forEach>
 
 			</table>
 		</div>
 
+
+		<nav aria-label="">
+			<ul class="pager">
+
+				<c:if test="${peliculas.number!=0}">
+					<li><a
+						href="${urlPeliculas}/indexPaginate?page=${peliculas.number - 1 }">Anterior</a></li>
+				</c:if>
+
+				<c:if test="${ultimo != true}">
+					<li><a
+						href="${urlPeliculas}/indexPaginate?page=${peliculas.number + 1 }">Siguiente</a></li>
+
+				</c:if>
+			</ul>
+		</nav>
+
 		<hr class="featurette-divider">
+
+		
 
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 
