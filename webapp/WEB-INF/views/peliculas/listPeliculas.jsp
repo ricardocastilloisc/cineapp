@@ -67,7 +67,7 @@
 						</c:choose>
 						<td><a href="${urlEdit}/${pelicula.id}" class="btn btn-success btn-sm" role="button"
 							title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
-							<a href="${urlDelete}/${pelicula.id}" class="btn btn-danger btn-sm" role="button"
+							<a href="${urlDelete}/${pelicula.id}" onclick='return confirm("¿Estas seguro?")' class="btn btn-danger btn-sm" role="button"
 							title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a>
 						</td>
 					</tr>
