@@ -101,8 +101,13 @@ public class PeliculasController {
 	@GetMapping(value="/delete/{id}")
 	public String eliminar(@PathVariable("id") int idPelicula, RedirectAttributes attributes) 
 	{
+		Pelicula pelicula  = servicePeliculas.buscarPorId(idPelicula);
+		
 		servicePeliculas.eliminar(idPelicula);
-		attributes.addFlashAttribute("mensaje", "El registro fue guardado");
+		
+		serviceDetalles.eliminar(pelicula.getDetalle().getId());
+
+		attributes.addFlashAttribute("mensaje", "El registro fue eliminado");
 		return "redirect:/peliculas/index";
 	}
 

@@ -18,4 +18,10 @@ public class DetallesServiceJPA implements IDetallesService{
 		
 	}
 
+	@Override
+	public void eliminar(int idDetalle) {
+		detallesRepo.deleteById(idDetalle);
+		
+	}
+
 }
