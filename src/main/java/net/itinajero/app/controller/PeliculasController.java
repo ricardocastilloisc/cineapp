@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
 import net.itinajero.app.model.Pelicula;
 import net.itinajero.app.service.IDetallesService;
 import net.itinajero.app.service.IPeliculasService;
@@ -49,7 +51,6 @@ public class PeliculasController {
 
 	@GetMapping("/create")
 	public String crear(@ModelAttribute Pelicula pelicula, Model model) {
-		model.addAttribute("generos", servicePeliculas.buscarGeneros());
 		return "peliculas/formPelicula";
 	}
 
@@ -82,7 +83,13 @@ public class PeliculasController {
 		// return "peliculas/formPelicula";
 		return "redirect:/peliculas/index";
 	}
-
+	
+	@ModelAttribute("generos")
+	public List<String> getGeneros()
+	{
+		return servicePeliculas.buscarGeneros();
+	}
+	
 	@GetMapping(value="/edit/{id}")
 	public String editar(@PathVariable("id") int idPelicula, Model model) 
 	{
