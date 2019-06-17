@@ -2,6 +2,7 @@ package net.itinajero.app.service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,11 @@ public class PeliculasServiceJPA implements IPeliculasService {
 
 	@Override
 	public Pelicula buscarPorId(int idPelicula) {
-		// TODO Auto-generated method stub
+		Optional<Pelicula> optional = peliculasRepo.findById(idPelicula);
+		if(optional.isPresent()) 
+		{
+			return optional.get();
+		}
 		return null;
 	}
 
