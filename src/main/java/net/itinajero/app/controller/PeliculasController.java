@@ -45,13 +45,8 @@ public class PeliculasController {
 	@GetMapping(value = "/indexPaginate")
 	public String mostrarIndexPaginado(Model model, Pageable page) {
 		Page<Pelicula> lista = servicePeliculas.buscarTodas(page);
-		
 		model.addAttribute("peliculas", lista);
-		
-		
 		model.addAttribute("ultimo", lista.isLast());
-		
-		
 		return "peliculas/listPeliculas";
 	}
 

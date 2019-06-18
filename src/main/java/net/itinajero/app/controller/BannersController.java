@@ -2,19 +2,20 @@ package net.itinajero.app.controller;
 
 import java.util.List;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import net.itinajero.app.model.Banner;
 import net.itinajero.app.service.IBannersService;
 import net.itinajero.app.util.Utileria;
@@ -52,7 +53,7 @@ public class BannersController {
 	 * @return
 	 */
 	@PostMapping("/save")
-	public String guardar(Banner banner, BindingResult result, RedirectAttributes attributes,
+	public String guardar(@ModelAttribute Banner banner, BindingResult result, RedirectAttributes attributes,
 			@RequestParam("archivoImagen") MultipartFile multiPart, HttpServletRequest request
 			) {
 		
@@ -67,7 +68,27 @@ public class BannersController {
 		}
 		
 		serviceBanners.insertar(banner);
-    	attributes.addFlashAttribute("mensaje", "El registro fue guardado");		
+    	attributes.addFlashAttribute("msg", "El registro fue guardado");		
 		return "redirect:/banners/index";
 	}	
+	
+	
+	@GetMapping(value = "/edit/{id}")
+	public String editar(@PathVariable("id") int idBanner, Model model) {		
+		Banner banner = serviceBanners.buscarPorId(idBanner);			
+		model.addAttribute("banner", banner);
+		return "banners/formBanner";
+	}
+	
+	/**
+	 * Metodo para eliminar un registro de banner
+	 */
+	@GetMapping(value = "/delete/{id}")
+	public String eliminar(@PathVariable("id") int idBanner, RedirectAttributes attributes) {
+		// Eliminamos el registro del Banner
+		serviceBanners.eliminar(idBanner);
+		attributes.addFlashAttribute("msg", "El banner fue eliminado!.");
+		return "redirect:/banners/index";
+	}
+	
 }

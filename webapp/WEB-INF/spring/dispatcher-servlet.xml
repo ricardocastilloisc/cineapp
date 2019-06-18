@@ -14,7 +14,7 @@
 		<mvc:argument-resolvers>
 			<bean
 				class="org.springframework.data.web.PageableHandlerMethodArgumentResolver">
-				<property name="maxPageSize" value="5"></property>
+				<property name="maxPageSize" value="30"></property>
 			</bean>
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
