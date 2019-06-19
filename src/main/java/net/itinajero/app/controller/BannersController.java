@@ -39,7 +39,7 @@ public class BannersController {
 	 * @return
 	 */
 	@GetMapping("/create")
-	public String crear() {
+	public String crear(@ModelAttribute Banner banner) {
 		return "banners/formBanner";
 	}
 	

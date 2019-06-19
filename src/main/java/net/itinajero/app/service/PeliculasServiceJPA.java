@@ -7,11 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import net.itinajero.app.model.Horario;
 import net.itinajero.app.model.Pelicula;
 import net.itinajero.app.repository.HorariosRepository;
 import net.itinajero.app.repository.PeliculasRepository;
+import org.springframework.data.domain.Sort;
 
 // Registramos esta clase como un Bean en nuestro Root ApplicationContext.
 @Service
@@ -34,13 +36,21 @@ public class PeliculasServiceJPA implements IPeliculasService {
 	public List<Pelicula> buscarPorFecha(Date fecha) {		
 		List<Pelicula> peliculas = null;
 		// Buscamos en la tabla de horarios, [agrupando por idPelicula]
+		System.out.println("//////////////////////////////////////////////");
+		System.out.println(fecha);
+		System.out.println("//////////////////////////////////////////////");
 		List<Horario> horarios = horariosRepo.findByFecha(fecha);
+		
+	
 		peliculas = new LinkedList<>();
 
 		// Formamos la lista final de Peliculas que regresaremos.
 		for (Horario h : horarios) {
 			// Solo nos interesa de cada registro de horario, el registro de pelicula.
 			peliculas.add(h.getPelicula());
+			System.out.println("//////////////////////////////////////////////");
+			System.out.println(h.getPelicula());
+			System.out.println("//////////////////////////////////////////////");
 		}		
 		return peliculas;
 	}

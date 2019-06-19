@@ -2,6 +2,8 @@ package net.itinajero.app.repository;
 
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,7 +23,7 @@ public interface HorariosRepository extends JpaRepository<Horario, Integer>{
 	/* mysql.cnf
 	 *  [mysqld]
 	 * 	sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" 
-	 */
-	@Query("select h from Horario h where h.fecha = :fecha and pelicula.estatus='Activa' group by h.pelicula order by pelicula.id asc")
+	 */	
+	@Query("select h from Horario h where h.fecha = :fecha and pelicula.estatus='Activa' order by pelicula.id asc")
 	public List<Horario> findByFecha(@Param("fecha") Date fecha);
 }
