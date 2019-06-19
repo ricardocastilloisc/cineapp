@@ -41,16 +41,21 @@ public class HomeController {
 		return "home";
 	}
 
+	@RequestMapping(value = "/formLogin", method = RequestMethod.GET)
+	public String mostrarLogin() {
+		return "formLogin";
+	}
+
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String buscar(@RequestParam("fecha") Date fecha, Model model) {		
-		try {			
+	public String buscar(@RequestParam("fecha") Date fecha, Model model) {
+		try {
 			Date fechaSinHora = dateFormat.parse(dateFormat.format(fecha));
 			List<String> listaFechas = Utileria.getNextDays(4);
-			List<Pelicula> peliculas  = servicePeliculas.buscarPorFecha(fechaSinHora);
-			model.addAttribute("fechas", listaFechas);			
+			List<Pelicula> peliculas = servicePeliculas.buscarPorFecha(fechaSinHora);
+			model.addAttribute("fechas", listaFechas);
 			// Regresamos la fecha que selecciono el usuario con el mismo formato
-			model.addAttribute("fechaBusqueda",dateFormat.format(fecha));			
-			model.addAttribute("peliculas", peliculas);			
+			model.addAttribute("fechaBusqueda", dateFormat.format(fecha));
+			model.addAttribute("peliculas", peliculas);
 			return "home";
 		} catch (ParseException e) {
 			System.out.println("Error: HomeController.buscar" + e.getMessage());
@@ -96,9 +101,9 @@ public class HomeController {
 	public List<Banner> getBanners() {
 		return serviceBanners.buscarActivos();
 	}
-	
+
 	@RequestMapping(value = "/about")
-	public String mostrarAcerca() {			
+	public String mostrarAcerca() {
 		return "acerca";
 	}
 }
