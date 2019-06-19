@@ -11,11 +11,11 @@
 	<http auto-config="true">
 		<!--Declaramos todos los recursos que estaran protegidos -->
 		<intercept-url pattern="/peliculas/*"
-			access="hasAnyAuthority('EDITOR')" />
+			access="hasAnyAuthority('EDITOR', 'GERENTE')" />
 		<intercept-url pattern="/horarios/*"
-			access="hasAnyAuthority('EDITOR')" />
+			access="hasAnyAuthority('EDITOR', 'GERENTE')" />
 		<intercept-url pattern="/noticias/*"
-			access="hasAnyAuthority('EDITOR')" />
+			access="hasAnyAuthority('EDITOR', 'GERENTE')" />
 		<intercept-url pattern="/banners/*"
 			access="hasAnyAuthority('GERENTE')" />
 	</http>
