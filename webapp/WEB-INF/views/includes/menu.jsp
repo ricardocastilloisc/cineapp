@@ -32,7 +32,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${urlRoot}">My CineSite</a>
+			<a class="navbar-brand" href="${urlRoot}admin/index">My CineSite | Administracion</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
@@ -52,7 +52,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${urlRoot}">My CineSite | Administracion</a>
+			<a class="navbar-brand" href="${urlRoot}admin/index">My CineSite | Administracion</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
