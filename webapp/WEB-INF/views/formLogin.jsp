@@ -32,23 +32,14 @@
 		<img src="${urlPublic}/images/login.png" width="136" height="136"
 			class="center">
 
-		<form class="form-signin" action="${urlRoot}login" method="post">
-
-			<c:if test="${param.error!= null}">
-				<img src="${urlPublic}/images/error.png" width="48" height="48"
-					class="center">
-				<h4 class="form-signin-heading" style="color: red">Acceso
-					denegado</h4>
-			</c:if>
-
+		<form class="form-signin" action="j_security_check" method="post">
 			<h3 class="form-signin-heading">CineSite | Administracion</h3>
 			<label for="j_username" class="sr-only">Usuario</label> <input
-				type="text" id="username" name="username" class="form-control"
+				type="text" id="j_username" name="j_username" class="form-control"
 				placeholder="Usuario" required autofocus> <label
-				for="password" class="sr-only">Contraseña</label> <input
-				type="password" id="password" name="password" class="form-control"
-				placeholder="Password" required> <input type="hidden"
-				name="${_csrf.parameterName}" value="${_csrf.token}" />
+				for="j_password" class="sr-only">Contraseña</label> <input
+				type="password" id="j_password" name="j_password"
+				class="form-control" placeholder="Password" required>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 		</form>
 
