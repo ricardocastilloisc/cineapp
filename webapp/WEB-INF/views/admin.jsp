@@ -32,7 +32,7 @@
 
 		<div class="jumbotron">
 			<h3>Administración del Sistema</h3>
-			<p>Bienvenido(a) ${usuario}</p>
+			<p>Bienvenido(a) ${usuario.name}</p>
 		</div>
 
 		<!-- FOOTER -->
