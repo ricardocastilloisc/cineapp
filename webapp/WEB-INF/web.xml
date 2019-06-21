@@ -86,6 +86,7 @@
 		<web-resource-collection>
 			<web-resource-name>URLs protegidas solo para el rol Editor</web-resource-name>
 			<!--Define the context-relative URL(s) to be protected -->
+			<url-pattern>/admin/*</url-pattern>
 			<url-pattern>/horarios/*</url-pattern>
 			<url-pattern>/noticias/*</url-pattern>
 			<url-pattern>/peliculas/*</url-pattern>
